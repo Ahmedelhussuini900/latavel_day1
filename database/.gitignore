@@ -1,0 +1,23 @@
+*.sqlite*
+.editorconfig
+        .env.example
+        .gitattributes
+        .gitignore
+        README.md
+        app/
+        artisan
+        bootstrap/
+        composer.json
+        composer.lock
+        config/
+        database/
+        package.json
+        phpunit.xml
+        postcss.config.js
+        public/
+        resources/
+        routes/
+        storage/
+        tailwind.config.js
+        tests/
+        vite.config.js
