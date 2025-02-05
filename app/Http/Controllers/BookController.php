@@ -11,18 +11,17 @@ class BookController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
-
-    }
+{
+    $books = Book::paginate(10); // No need for all()
+    return view('books.index', compact('books'));
+}
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
-        return view('book.create');
+        return view('books.create');
     }
 
     /**
@@ -30,49 +29,55 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
+        $validatedData = $request->validate([
+            'name'        => 'required|string|max:255',
             'description' => 'required|string',
-            'price' => 'required|numeric|min:0',
+            'price'       => 'required|numeric|min:0',
         ]);
 
-        // Insert data into the database
-        Book::create($validated);
+        Book::create($validatedData);
 
-
-        return redirect()->back()->with(['success' => 'Book created successfully!']);
-
+        return redirect()->route('books.index')->with('success', 'Book created successfully.');
     }
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Book $book)
     {
-        //
+        return view('books.show', compact('book'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Book $book)
     {
-        //
+        return view('books.edit', compact('book'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Book $book)
     {
-        //
+        $validatedData = $request->validate([
+            'name'        => 'required|string|max:255',
+            'description' => 'required|string',
+            'price'       => 'required|numeric|min:0',
+        ]);
+
+        $book->update($validatedData);
+
+        return redirect()->route('books.index')->with('success', 'Book updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Book $book)
     {
-        //
+        $book->delete();
+
+        return redirect()->route('books.index')->with('success', 'Book deleted successfully.');
     }
 }
