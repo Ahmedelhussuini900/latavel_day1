@@ -27,3 +27,5 @@ Route::delete('/books/{book}', [BookController::class, 'destroy'])->name('books.
 Route::get('/dashboard', function () {
     return view('layouts.dashboard');
 })->name('dashboard');
+
+

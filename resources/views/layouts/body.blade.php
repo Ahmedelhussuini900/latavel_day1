@@ -1,7 +1,7 @@
 
 <div class="container-fluid">
     <div class="row">
- 
+
       <nav class="col-md-3 col-lg-2 d-md-block sidebar">
         <div class="position-sticky">
           <ul class="nav flex-column">
@@ -15,6 +15,23 @@
                 <i class="bi bi-book"></i> Books
               </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ route('books.create') }}">
+                  <i class="bi bi-book"></i> Add Book
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="{{ route('books.create') }}">
+                  <i class="bi bi-gear"></i> Setting
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" href="{{ route('books.create') }}">
+                  <i class="bi bi-bell"></i>notification
+                </a>
+              </li>
+
 
           </ul>
         </div>

@@ -19,7 +19,12 @@
               <th scope="col">Name</th>
               <th scope="col" >Description</th>
               <th scope="col" >Price</th>
+              <th scope="col">created_at</th>
+              <th scope="col">updated_at</th>
               <th scope="col">Actions</th>
+
+
+
           </tr>
       </thead>
       <tbody>
@@ -29,6 +34,8 @@
               <td>{{ $book->name }}</td>
               <td>{{ $book->description }}</td>
               <td>${{ number_format($book->price, 2) }}</td>
+              <td>{{ $book->created_at }}</td>
+              <td>{{ $book->updated_at }}</td>
               <td>
                   <a href="{{ route('books.edit', $book) }}" class="btn btn-primary btn-sm">
                       <i class="bi bi-pencil"></i> Edit
